@@ -21,7 +21,7 @@ export const Hero = () => {
       />
         <div className='flex-row'>
           <AnimatedContent delay={1.8} distance={150}>
-            <button className="buttons"  onClick={() => navigate('/dashboard')}>
+            <button className="buttons"  onClick={() => navigate('/signup')}>
               <ShinyText text='Get Started' />
             </button>
           </AnimatedContent>

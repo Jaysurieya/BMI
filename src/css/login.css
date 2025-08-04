@@ -129,6 +129,63 @@
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
 
+  /* Password strength indicator */
+.password-strength {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.strength-bar {
+  flex: 1;
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.strength-text {
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 50px;
+}
+
+/* Password validation errors */
+.password-errors {
+  margin-top: 8px;
+}
+
+.password-errors .error-message {
+  color: #ef4444;
+  font-size: 12px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.password-errors .error-message::before {
+  content: "•";
+  color: #ef4444;
+}
+
+/* Error styling for input fields */
+.login-input.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 1px #ef4444;
+}
+
+.login-input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
   .login-input.error {
     border-color: #ff4444;
   }

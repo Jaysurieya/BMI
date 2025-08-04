@@ -3,6 +3,7 @@ import Background from './Background';
 import '../css/login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { validatePassword, getPasswordStrengthColor, getPasswordStrengthText } from '../lib/utils';
 
 function Signup() {
   const navigate = useNavigate();
@@ -16,6 +17,11 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [passwordValidation, setPasswordValidation] = useState({
+    isValid: false,
+    errors: [],
+    strength: 'weak'
+  });
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -23,6 +29,12 @@ function Signup() {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    
+    // Validate password when password field changes
+    if (name === 'password') {
+      const validation = validatePassword(value);
+      setPasswordValidation(validation);
+    }
     
     // Check if passwords match when either password field changes
     if (name === 'password' || name === 'confirmPassword') {
@@ -35,6 +47,11 @@ function Signup() {
   const handleSubmit = async () => {
     if (!passwordMatch) {
       alert('Passwords do not match!');
+      return;
+    }
+    
+    if (!passwordValidation.isValid) {
+      alert('Please fix password validation errors!');
       return;
     }
     
@@ -119,7 +136,7 @@ function Signup() {
                   value={formData.password}
                   onChange={handleInputChange}
                   onKeyPress={handleKeyPress}
-                  className="login-input"
+                  className={`login-input ${!passwordValidation.isValid && formData.password ? 'error' : ''}`}
                   required
                 />
                 <button
@@ -130,6 +147,36 @@ function Signup() {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
+              
+              {/* Password strength indicator */}
+              {formData.password && (
+                <div className="password-strength">
+                  <div className="strength-bar">
+                    <div 
+                      className="strength-fill"
+                      style={{ 
+                        width: `${(passwordValidation.strength === 'strong' ? 100 : passwordValidation.strength === 'medium' ? 66 : 33)}%`,
+                        backgroundColor: getPasswordStrengthColor(passwordValidation.strength)
+                      }}
+                    ></div>
+                  </div>
+                  <span 
+                    className="strength-text"
+                    style={{ color: getPasswordStrengthColor(passwordValidation.strength) }}
+                  >
+                    {getPasswordStrengthText(passwordValidation.strength)}
+                  </span>
+                </div>
+              )}
+              
+              {/* Password validation errors */}
+              {formData.password && passwordValidation.errors.length > 0 && (
+                <div className="password-errors">
+                  {passwordValidation.errors.map((error, index) => (
+                    <div key={index} className="error-message">{error}</div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="input-group">
@@ -176,8 +223,8 @@ function Signup() {
             {/* Login Button */}
             <button 
               onClick={handleSubmit}
-              disabled={isLoading || !formData.email || !formData.password || !formData.confirmPassword}
-              className={`login-button ${isLoading ? 'loading' : ''} ${(!formData.email || !formData.password || !formData.confirmPassword) ? 'disabled' : ''}`}
+              disabled={isLoading || !formData.email || !formData.password || !formData.confirmPassword || !passwordValidation.isValid}
+              className={`login-button ${isLoading ? 'loading' : ''} ${(!formData.email || !formData.password || !formData.confirmPassword || !passwordValidation.isValid) ? 'disabled' : ''}`}
             >
               {isLoading ? (
                 <div className="spinner"></div>

@@ -6,7 +6,7 @@ import Navbar_com from './Navbar-com'
 
 const Dashboard = () => {
   return (
-    <div className='dash-container'>
+    <div>
       <div className='navbar-top'>
         <Navbar />
       </div>

@@ -1,0 +1,96 @@
+/* Custom text colors for Stepper component */
+
+/* Main stepper container background */
+.step-circle-container {
+    background-color: #ffffff !important; /* White background */
+    border: none !important; /* Remove black outline */
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(0, 0, 0, 0.05) !important; /* Enhanced shadow effect */
+    /* Alternative shadow effects you can use:
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important; Stronger shadow
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; Subtle shadow
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important; With inner highlight
+    */
+}
+
+/* Step content background */
+.step-content {
+    background-color: transparent; /* Transparent to show container background */
+}
+
+/* Step content text colors for better contrast */
+.step-content h3 {
+    color: #2563eb; /* Blue color for headings */
+    margin-bottom: 1rem;
+}
+
+.step-content p {
+    color: #374151; /* Dark gray for paragraph text */
+    line-height: 1.6;
+}
+
+/* Override Stepper button colors */
+.back-button {
+    color: #6b7280 !important; /* Gray color for back button */
+}
+
+.back-button:hover {
+    color: #374151 !important; /* Darker gray on hover */
+}
+
+.next-button {
+    color: #ffffff !important; /* White text for next button */
+    background-color: #2563eb !important; /* Blue background */
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2) !important; /* Button shadow */
+}
+
+.next-button:hover {
+    background-color: #1d4ed8 !important; /* Darker blue on hover */
+    box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3) !important; /* Enhanced shadow on hover */
+}
+
+/* Step indicator colors */
+.step-indicator-inner {
+    color: #6b7280 !important; /* Gray for inactive steps */
+}
+
+.step-indicator-inner.active {
+    color: #2563eb !important; /* Blue for active step */
+}
+
+.step-indicator-inner.complete {
+    color: #059669 !important; /* Green for completed steps */
+}
+
+/* Step number color */
+.step-number {
+    color: inherit !important;
+}
+
+/* Check icon color */
+.check-icon {
+    color: #ffffff !important; /* White check icon */
+}
+
+/* Step connector colors */
+.step-connector {
+    background-color: #d1d5db !important; /* Light gray for connector */
+}
+
+.step-connector-inner {
+    background-color: #2563eb !important; /* Blue for completed connector */
+} 
+.input{
+    border:2px solid rgb(127, 126, 126);
+    border-radius: 5px;
+    width: 100%;
+}
+.box_out{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
