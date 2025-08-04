@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import { Details } from './components/Details';
+import DualScrollPicker from './components/DualScrollPicker';
 
 function App() {
   return(
@@ -14,6 +15,7 @@ function App() {
       <Route path='/signup' element={<Signup />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/details' element={<Details />} />
+      <Route path='/wheel' element={<DualScrollPicker />} />
     </Routes>
   );
 }

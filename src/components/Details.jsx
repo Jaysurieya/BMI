@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Stepper, { Step } from './Stepper/Stepper';
 import { color } from 'framer-motion';
 import '../css/Details.css';
@@ -8,8 +8,13 @@ import Box_curved from './Box-curved';
 import { style } from 'framer-motion/client';
 import { BsCursor } from 'react-icons/bs';
 import GlareHover from './GlareHover/GlareHover';
+import DualScrollPicker from './DualScrollPicker.jsx';
+import DualScrollHeight from './Dualscroll_height.jsx';
+import SingleScrollAge from './SingleScroll.jsx';
 
 export const Details = () => {
+    const [selectedGender, setSelectedGender] = useState(null);
+    
     return(
         <div>
             <DottedBackground>
@@ -29,9 +34,73 @@ export const Details = () => {
                             <p>We support all forms of gender expression. However, we need this to calculate your body metrics.</p>
                             <br />
                             <div className="box_out">
-                                <GlareHover children={'Male'} height='80px' width='100px' background={'rgb(215, 215, 215)'} borderColor='rgb(215,215,215)'/>
-                                <GlareHover children={'Female'} height='80px' width='100px' background={'rgb(215, 215, 215)'} borderColor='rgb(215,215,215)'/>
+                            <div style={{ display: 'flex', gap: '20px' }}>
+                            {/* Male Option */}
+                            <div 
+                                style={{ 
+                                border: selectedGender === 'male' ? '2px solid black' : '1px solid transparent',
+                                borderRadius: '4px',
+                                transition: 'border 0.2s ease'
+                                }}
+                                onClick={() => setSelectedGender('male')}
+                            >
+                                <GlareHover 
+                                children={'Male'} 
+                                height='80px' 
+                                width='100px' 
+                                background={'rgb(215, 215, 215)'} 
+                                borderColor='rgb(215,215,215)' 
+                                />
                             </div>
+
+                            {/* Female Option */}
+                            <div 
+                                style={{ 
+                                border: selectedGender === 'female' ? '2px solid black' : '1px solid transparent',
+                                borderRadius: '4px',
+                                transition: 'border 0.2s ease'
+                                }}
+                                onClick={() => setSelectedGender('female')}
+                            >
+                                <GlareHover 
+                                children={'Female'} 
+                                height='80px' 
+                                width='100px' 
+                                background={'rgb(215, 215, 215)'} 
+                                borderColor='rgb(215,215,215)' 
+                                />
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </Step>
+                    <Step>
+                        <div className="step-content">
+                            <h3>language</h3>
+                        </div>
+                    </Step>
+                    <Step>
+                        <div className="step-content">
+                            <h3>What's your current weight?</h3>
+                            <DualScrollPicker />
+                        </div>
+                    </Step>
+                    <Step>
+                        <div className="step-content">
+                            <h3>What's your current Height?</h3>
+                            <DualScrollHeight />
+                        </div>
+                    </Step>
+                    <Step>
+                        <div className="step-content">
+                        <h3>What's your current Age?</h3>
+                        <SingleScrollAge />
+                        </div>
+                    </Step>
+                    <Step>
+                        <div className="step-content">
+                            <h3>Step 3: Confirmation</h3>
+                            <p>Review and confirm your details.</p>
                         </div>
                     </Step>
                     <Step>
