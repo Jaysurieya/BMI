@@ -1,22 +1,32 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-// Removed lucide-react import - using custom SVG icons instead
 
-export default function DualScrollHeight({
-  leftValues = Array.from({ length: 250 }, (_, i) => i + 50), // 50-299 cm
+export default function DualScrollPicker_Height({
+  leftValues = Array.from({ length: 200 }, (_, i) => i), // 0-199 kg
   rightValues = Array.from({ length: 10 }, (_, i) => i), // 0-9 for decimal
   onSelectionChange,
-  leftLabel = "CM",
+  leftLabel = "cm",
   rightLabel = "decimal",
 }) {
-  const [leftSelected, setLeftSelected] = useState(leftValues[Math.floor(leftValues.length / 2)])
-  const [rightSelected, setRightSelected] = useState(rightValues[Math.floor(rightValues.length / 2)])
+  const [leftSelected, setLeftSelected] = useState(0)
+  const [rightSelected, setRightSelected] = useState(0)
 
   const leftScrollRef = useRef(null)
   const rightScrollRef = useRef(null)
 
   const itemHeight = 40
+  const visibleItems = 5
+  const containerHeight = itemHeight * visibleItems // 200px total height
+
+  useEffect(() => {
+    if (leftScrollRef.current) {
+      leftScrollRef.current.scrollTop = 0
+    }
+    if (rightScrollRef.current) {
+      rightScrollRef.current.scrollTop = 0
+    }
+  }, [])
 
   useEffect(() => {
     onSelectionChange?.(leftSelected, rightSelected)
@@ -47,7 +57,6 @@ export default function DualScrollHeight({
     <div className="relative flex flex-col items-center">
       <div className="text-xs font-medium text-slate-500 mb-2 uppercase tracking-wider">{label}</div>
 
-      {/* Up arrow */}
       <button
         onClick={() => {
           const currentIndex = values.indexOf(selected)
@@ -73,25 +82,27 @@ export default function DualScrollHeight({
         {/* Scroll container */}
         <div
           ref={scrollRef}
-          className="h-32 w-24 overflow-y-scroll scrollbar-hide relative"
+          className="overflow-y-scroll scrollbar-hide relative"
           style={{
             scrollSnapType: "y mandatory",
             paddingTop: `${itemHeight * 2}px`,
             paddingBottom: `${itemHeight * 2}px`,
+            height: `${containerHeight}px`,
+            width: "6rem",
           }}
           onScroll={() => handleScroll(scrollRef, values, setSelected)}
         >
           {values.map((value, index) => (
             <div
               key={value}
-              className={`h-10 flex items-center justify-center text-xl font-bold transition-all duration-300 cursor-pointer select-none ${
+              className={`flex h-10 items-center justify-center text-xl font-bold transition-all duration-300 cursor-pointer select-none ${
                 value === selected
                   ? "text-slate-900 scale-110 drop-shadow-sm font-extrabold z-20 relative"
                   : Math.abs(values.indexOf(selected) - index) === 1
-                    ? "text-slate-700 scale-95"
-                    : index > values.indexOf(selected)
-                      ? "text-slate-400 scale-90 blur-[1px]"
-                      : "text-slate-500 scale-90"
+                  ? "text-slate-700 scale-95"
+                  : index > values.indexOf(selected)
+                  ? "text-slate-400 scale-90 blur-[1px]"
+                  : "text-slate-500 scale-90"
               }`}
               style={{
                 scrollSnapAlign: "center",
@@ -102,13 +113,12 @@ export default function DualScrollHeight({
                 scrollToValue(scrollRef, values, value)
               }}
             >
-              {value.toString().padStart(3, "0")}
+              {value.toString().padStart(2, "0")}
             </div>
           ))}
         </div>
       </div>
 
-      {/* Down arrow */}
       <button
         onClick={() => {
           const currentIndex = values.indexOf(selected)
@@ -151,12 +161,12 @@ export default function DualScrollHeight({
 
         {/* Selected values display */}
         <div className="mt-6 text-center">
-          <div className="text-sm text-black mb-1 font-semibold">Height</div>
-          <div className="text-2xl font-bold text-black">
-            {leftSelected.toString()}
-            <span className="text-black mx-1">.</span>
+          <div className="text-sm text-slate-500 mb-1 font-medium">Height</div>
+          <div className="text-3xl font-bold text-emerald-600">
+            {leftSelected.toString().padStart(2, "0")}
+            <span className="text-slate-400 mx-1">.</span>
             {rightSelected.toString()}
-            <span className="text-black text-xl ml-2">cm</span>
+            <span className="text-slate-500 text-xl ml-2">{leftLabel}</span>
           </div>
         </div>
 

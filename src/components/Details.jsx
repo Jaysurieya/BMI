@@ -8,9 +8,9 @@ import Box_curved from './Box-curved';
 import { style } from 'framer-motion/client';
 import { BsCursor } from 'react-icons/bs';
 import GlareHover from './GlareHover/GlareHover';
-import DualScrollPicker from './DualScrollPicker.jsx';
-import DualScrollHeight from './Dualscroll_height.jsx';
-import SingleScrollAge from './SingleScroll.jsx';
+import DualScrollPicker_weight from './DualScrollPicker.jsx'; 
+import DualScrollPicker_Height from './Dualscroll_height.jsx';
+import AgeScrollPicker from './SingleScroll.jsx';
 
 export const Details = () => {
     const [selectedGender, setSelectedGender] = useState(null);
@@ -34,43 +34,43 @@ export const Details = () => {
                             <p>We support all forms of gender expression. However, we need this to calculate your body metrics.</p>
                             <br />
                             <div className="box_out">
-                            <div style={{ display: 'flex', gap: '20px' }}>
-                            {/* Male Option */}
-                            <div 
-                                style={{ 
-                                border: selectedGender === 'male' ? '2px solid black' : '1px solid transparent',
-                                borderRadius: '4px',
-                                transition: 'border 0.2s ease'
-                                }}
-                                onClick={() => setSelectedGender('male')}
-                            >
-                                <GlareHover 
-                                children={'Male'} 
-                                height='80px' 
-                                width='100px' 
-                                background={'rgb(215, 215, 215)'} 
-                                borderColor='rgb(215,215,215)' 
-                                />
-                            </div>
+                                <div style={{ display: 'flex', gap: '20px' }}>
+                                    {/* Male Option */}
+                                    <div 
+                                        style={{ 
+                                        border: selectedGender === 'male' ? '2px solid black' : '1px solid transparent',
+                                        borderRadius: '10px',
+                                        transition: 'border 0.2s ease'
+                                        }}
+                                        onClick={() => setSelectedGender('male')}
+                                    >
+                                        <GlareHover 
+                                        children={'Male'} 
+                                        height='80px' 
+                                        width='100px' 
+                                        background={'rgb(215, 215, 215)'} 
+                                        borderColor='rgb(215,215,215)' 
+                                        />
+                                    </div>
 
-                            {/* Female Option */}
-                            <div 
-                                style={{ 
-                                border: selectedGender === 'female' ? '2px solid black' : '1px solid transparent',
-                                borderRadius: '4px',
-                                transition: 'border 0.2s ease'
-                                }}
-                                onClick={() => setSelectedGender('female')}
-                            >
-                                <GlareHover 
-                                children={'Female'} 
-                                height='80px' 
-                                width='100px' 
-                                background={'rgb(215, 215, 215)'} 
-                                borderColor='rgb(215,215,215)' 
-                                />
-                            </div>
-                            </div>
+                                    {/* Female Option */}
+                                    <div 
+                                        style={{ 
+                                        border: selectedGender === 'female' ? '2px solid black' : '1px solid transparent',
+                                        borderRadius: '10px',
+                                        transition: 'border 0.2s ease'
+                                        }}
+                                        onClick={() => setSelectedGender('female')}
+                                    >
+                                        <GlareHover 
+                                        children={'Female'} 
+                                        height='80px' 
+                                        width='100px' 
+                                        background={'rgb(215, 215, 215)'} 
+                                        borderColor='rgb(215,215,215)' 
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </Step>
@@ -82,19 +82,19 @@ export const Details = () => {
                     <Step>
                         <div className="step-content">
                             <h3>What's your current weight?</h3>
-                            <DualScrollPicker />
+                            <DualScrollPicker_weight />
                         </div>
                     </Step>
                     <Step>
                         <div className="step-content">
                             <h3>What's your current Height?</h3>
-                            <DualScrollHeight />
+                            <DualScrollPicker_Height />
                         </div>
                     </Step>
                     <Step>
                         <div className="step-content">
                         <h3>What's your current Age?</h3>
-                        <SingleScrollAge />
+                        <AgeScrollPicker />
                         </div>
                     </Step>
                     <Step>

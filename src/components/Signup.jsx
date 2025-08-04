@@ -60,8 +60,8 @@ function Signup() {
     await new Promise(resolve => setTimeout(resolve, 2000));
     setIsLoading(false);
     console.log('Signup attempted with:', formData);
-    alert(`Signup attempted with:\nEmail: ${formData.email}\nPassword: ${formData.password.replace(/./g, '*')}`);
-    
+    //alert(`Signup attempted with:\nEmail: ${formData.email}\nPassword: ${formData.password.replace(/./g, '*')}`);
+    navigate('/details');
     // Show success overlay briefly
     setShowSuccess(true);
     setTimeout(() => {
