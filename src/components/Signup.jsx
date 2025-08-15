@@ -61,7 +61,7 @@ function Signup() {
     try {
       // Send POST request using Axios
       const response = await axios.post(
-        'http://localhost:5000/api/auth/signup', // Replace with your actual API endpoint
+        'http://localhost:5000/api/auth/signup',
         formData,
         {
           headers: {
@@ -71,13 +71,13 @@ function Signup() {
       );
   
       console.log('Signup successful:', response.data);
-      
+      navigate('/details');
       // Show success overlay briefly
       setShowSuccess(true);
       setTimeout(() => {
         setShowSuccess(false);
       }, 1000);
-  
+      
       // Optionally redirect or reset form
       // navigate('/login'); // Example: Redirect after success
       // setFormData({ email: '', password: '', confirmPassword: '', rememberMe: false }); // Reset form
