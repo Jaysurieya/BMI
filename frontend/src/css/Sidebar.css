@@ -2,12 +2,17 @@
 
 /* --- Desktop Sidebar Styles --- */
 .desktop-sidebar {
+  position: fixed; /* Change from relative to fixed positioning */
+  top: 0;
+  left: 0;
   height: 100vh;
   padding: 1rem;
   background-color: #222121; /* neutral-100 */
-  width: 300px;
+  width: 60px; /* Set initial collapsed width */
   flex-shrink: 0;
   display: none; /* Hidden by default */
+  z-index: 100;
+  /* Remove CSS transition - let Framer Motion handle all animations */
 }
 
 /* --- Mobile Sidebar & Overlay Styles --- */
@@ -29,7 +34,7 @@
 }
 
 .sidebar-icon {
-  color: #262626; /* neutral-800 */
+  color: #ffffff; /* neutral-800 */
 }
 
 .mobile-overlay {
@@ -50,7 +55,7 @@
   right: 2.5rem;
   top: 2.5rem;
   z-index: 50;
-  color: #262626; /* neutral-800 */
+  color: #ffffff; /* neutral-800 */
 }
 
 /* --- Sidebar Link Styles --- */
@@ -65,13 +70,14 @@
 }
 
 .sidebar-link-label {
-  color: #404040; /* neutral-700 */
+  color: #ffffff; /* neutral-700 */
   font-size: 0.875rem; /* 14px */
-  white-space: pre;
+  white-space: nowrap; /* Changed from pre to nowrap for better text handling */
   display: inline-block;
   transition: all 150ms ease-in-out;
   padding: 0 !important;
   margin: 0 !important;
+  overflow: hidden; /* Prevent text overflow when collapsed */
 }
 
 /* --- Group Hover Effect --- */
@@ -83,7 +89,7 @@
 /* --- Dark Mode Styles --- */
 .dark .desktop-sidebar,
 .dark .mobile-sidebar-container {
-  background-color: #262626; /* neutral-800 */
+  background-color: #ffffff; /* neutral-800 */
 }
 
 .dark .sidebar-icon,
@@ -92,11 +98,24 @@
 }
 
 .dark .mobile-overlay {
-  background-color: #171717; /* neutral-900 */
+  background-color: #ffffff; /* neutral-900 */
 }
 
 .dark .sidebar-link-label {
   color: #e5e5e5; /* neutral-200 */
+}
+
+/* --- Layout Container Styles --- */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Main Content Styles --- */
+.main-content {
+  flex: 1;
+  margin-left: 60px; /* Add left margin to account for collapsed sidebar */
+  transition: margin-left 0.3s ease-in-out;
 }
 
 /* --- Responsive Styles --- */
@@ -104,5 +123,15 @@
   .desktop-sidebar {
     display: flex;
     flex-direction: column;
+  }
+  
+  .main-content {
+    margin-left: 60px; /* Ensure margin on desktop */
+  }
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin-left: 0; /* No margin on mobile since sidebar is overlay */
   }
 }

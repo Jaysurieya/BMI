@@ -50,7 +50,14 @@ export const DesktopSidebar = ({ className, children, ...props }) => {
   return (
     <motion.div
       className={`desktop-sidebar ${className || ""}`}
-      animate={{ width: animate ? (open ? "300px" : "60px") : "300px" }}
+      animate={{ 
+        width: animate ? (open ? "300px" : "60px") : "300px" 
+      }}
+      transition={{
+        duration: 0.2, // Faster duration
+        ease: "easeOut", // Smoother easing
+        type: "tween" // Use tween instead of spring for more predictable animation
+      }}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       {...props}
@@ -96,6 +103,10 @@ export const SidebarLink = ({ link, className, ...props }) => {
         animate={{
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
+        }}
+        transition={{
+          duration: 0.15, // Faster text transition
+          ease: "easeOut"
         }}
         className="sidebar-link-label"
       >

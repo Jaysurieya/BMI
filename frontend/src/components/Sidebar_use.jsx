@@ -3,8 +3,10 @@ import React from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./Sidebar";
 import { IconLayoutDashboard, IconUsers, IconSettings } from "@tabler/icons-react";
 import "../css/Sidebar_use.css"; 
+import profileIcon from '../assets/person.svg';
+import Logo from '../assets/logo.svg';
+import Background from '../components/Background'
 
-// 1. Define your links data without inline styles
 const links = [
   {
     label: "Dashboard",
@@ -29,16 +31,16 @@ const SidebarUse = () => {
   return (
     // Main layout container
     <div className="layout-container">
-      {/* 2. Add the Sidebar component */}
+      {/* Sidebar component */}
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="sidebar-body-custom">
           <div className="sidebar-body-top-section">
             {/* Optional: Add a logo or header here */}
             <div className="logo-container">
-              <p className="logo-text">Logo</p>
+             <img src={Logo} alt="Logo" className="logo" />
             </div>
 
-            {/* 3. Map over your links to create SidebarLink components */}
+            {/* Map over your links to create SidebarLink components */}
             <div className="links-container">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />
@@ -53,7 +55,7 @@ const SidebarUse = () => {
                 href: "#",
                 icon: (
                   <img
-                    src="https://assets.aceternity.com/user-_3.png"
+                    src={profileIcon}
                     className="profile-avatar"
                     width={50}
                     height={50}
@@ -66,6 +68,10 @@ const SidebarUse = () => {
         </SidebarBody>
       </Sidebar>
 
+      {/* Main content area with proper margin */}
+      <div className="main-content">
+        <Background />
+      </div>       
     </div>
   );
 };
