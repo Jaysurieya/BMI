@@ -1,0 +1,3 @@
+backend:
+bcrypt for password hashing
+for checking existing one --> await Users.findOne(email);

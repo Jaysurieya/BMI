@@ -1,0 +1,28 @@
+for about us ---> Animated Testimonials from aceternity ui
+landing page background --->  background beams
+place holder scroll
+side bar
+tracing beam
+
+
+
+
+bentogrid
+comet card 
+expandable cards
+flip words
+floating dock
+focus cards
+link preview
+loader
+moving border
+multi step loader
+stateful button
+sticky banner
+sticky scroll reveal
+svg mask reveal
+time line
+typre writer
+modal dialog - framer
+
+
