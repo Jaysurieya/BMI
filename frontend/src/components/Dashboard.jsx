@@ -3,15 +3,14 @@ import Navbar from './Navbar'
 import '../css/Dasboard.css'
 import Background from '../components/Background'
 import Navbar_com from './Navbar-com'
+import Sidebar_use from './Sidebar_use'
+
 
 const Dashboard = () => {
   return (
     <div>
-      <div className='navbar-top'>
-        <Navbar />
-      </div>
       <Background>
-        {/* Content can go here */}
+        <Sidebar_use />
       </Background>
     </div>
   )
