@@ -3,6 +3,7 @@ import Background from './Background';
 import '../css/login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
   const navigate = useNavigate();
@@ -28,14 +29,28 @@ function Login() {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));
     setIsLoading(false);
-    console.log('Login attempted with:', formData);
-    alert(`Login attempted with:\nEmail: ${formData.email}\nPassword: ${formData.password.replace(/./g, '*')}`);
-    
-    // Show success overlay briefly
-    setShowSuccess(true);
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 1000);
+
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/auth/login',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',    
+            }
+          }
+        );
+      console.log('Login successful:', response.data);
+      navigate('/dashboard');
+      // Show success overlay briefly
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 1000);
+    } catch (error) {
+      console.error('Login failed:', error);
+      alert('Login failed. Please check your credentials.');
+    }
   };
 
   const handleGoogleLogin = () => {
