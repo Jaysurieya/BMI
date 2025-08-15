@@ -11,6 +11,7 @@ import GlareHover from './GlareHover/GlareHover';
 import DualScrollPicker_weight from './DualScrollPicker.jsx'; 
 import DualScrollPicker_Height from './Dualscroll_height.jsx';
 import AgeScrollPicker from './SingleScroll.jsx';
+import LiveLocationFinder from './Location.jsx';
 
 export const Details = () => {
     const [selectedGender, setSelectedGender] = useState(null);
@@ -76,7 +77,7 @@ export const Details = () => {
                     </Step>
                     <Step>
                         <div className="step-content">
-                            <h3>language</h3>
+                            <LiveLocationFinder />
                         </div>
                     </Step>
                     <Step>

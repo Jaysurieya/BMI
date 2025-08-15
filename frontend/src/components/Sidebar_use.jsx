@@ -70,7 +70,9 @@ const SidebarUse = () => {
 
       {/* Main content area with proper margin */}
       <div className="main-content">
-        <Background />
+        <Background>
+          
+        </Background>
       </div>       
     </div>
   );
