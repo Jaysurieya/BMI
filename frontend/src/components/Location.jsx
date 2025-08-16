@@ -77,6 +77,7 @@ const LiveLocationFinder = () => {
             height: "80px" 
         }}
         />
+        <div style={{paddingBottom: "20px"}}></div>
     </div>
   );
 };

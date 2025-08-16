@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Stepper, { Step } from './Stepper/Stepper';
-import { color } from 'framer-motion';
 import '../css/Details.css';
 import DottedBackground from './Background';
 import AnimatedModalDemo from './Animated-button-final';
@@ -12,6 +11,7 @@ import DualScrollPicker_weight from './DualScrollPicker.jsx';
 import DualScrollPicker_Height from './Dualscroll_height.jsx';
 import AgeScrollPicker from './SingleScroll.jsx';
 import LiveLocationFinder from './Location.jsx';
+import AnimatedList from './AnimatedList/AnimatedList.jsx';
 
 export const Details = () => {
     const [selectedGender, setSelectedGender] = useState(null);
@@ -94,20 +94,28 @@ export const Details = () => {
                     </Step>
                     <Step>
                         <div className="step-content">
-                        <h3>What's your current Age?</h3>
-                        <AgeScrollPicker />
+                            <h3>What's your target weight? (Set some realistic and possible goal)</h3>
+                            <DualScrollPicker_weight />
                         </div>
                     </Step>
                     <Step>
                         <div className="step-content">
-                            <h3>Step 3: Confirmation</h3>
-                            <p>Review and confirm your details.</p>
+                            <h3>What's your current Age?</h3>
+                            <AgeScrollPicker />
                         </div>
                     </Step>
                     <Step>
                         <div className="step-content">
-                            <h3>Step 3: Confirmation</h3>
-                            <p>Review and confirm your details.</p>
+                            <h3>How active are you?</h3>
+                            <p>Based on your lifestyle, we can assess your daily calorie requirements.</p>
+                            <div>
+                                <AnimatedList showGradients={false} displayScrollbar={false} items={[
+                                        "Mostly Sitting Seated work, low movement.",
+                                        "Often Standing Standing work, occasional walking.",
+                                        "Regularly Walking Frequent walking, steady activity.",
+                                        "Physically Intense Work Heavy labor, high exertion."
+                                    ]}  />
+                            </div>
                         </div>
                     </Step>
                     <Step>
