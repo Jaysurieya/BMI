@@ -1,7 +1,3 @@
-/*
-	Installed from https://reactbits.dev/default/
-*/
-
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 import "./AnimatedList.css";

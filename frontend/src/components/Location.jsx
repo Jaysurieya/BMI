@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../css/Location.css'; 
 
-const LiveLocationFinder = () => {
-  const [address, setAddress] = useState("Click the button to find your location.");
+const LiveLocationFinder = ({ value, onChange }) => {
+  const [address, setAddress] = useState(value || "Your address will appear here");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -13,7 +13,9 @@ const LiveLocationFinder = () => {
       const data = await response.json();
 
       if (data.results && data.results.length > 0) {
-        setAddress(data.results[0].formatted);
+        const fetchedAddress = data.results[0].formatted;
+        onChange(fetchedAddress);
+        setAddress(fetchedAddress);
       } else {
         setError("Address not found for your location.");
       }
