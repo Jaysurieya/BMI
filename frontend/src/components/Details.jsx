@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Stepper, { Step } from './Stepper/Stepper';
 import '../css/Details.css';
 import DottedBackground from './Background';
 import AnimatedModalDemo from './Animated-button-final';
-import Box_curved from './Box-curved';
-import { style } from 'framer-motion/client';
-import { BsCursor } from 'react-icons/bs';
 import GlareHover from './GlareHover/GlareHover';
 import DualScrollPicker_weight from './DualScrollPicker.jsx'; 
 import DualScrollPicker_Height from './Dualscroll_height.jsx';
@@ -14,7 +11,6 @@ import LiveLocationFinder from './Location.jsx';
 import AnimatedList from './AnimatedList/AnimatedList.jsx';
 
 export const Details = () => {
-    const [selectedGender, setSelectedGender] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         gender: null,
@@ -45,14 +41,43 @@ export const Details = () => {
     return(
         <div>
             <DottedBackground>
-                <Stepper initialStep={1}>
+                <Stepper initialStep={1} onFinalStepCompleted={async() => {
+                    console.log("Form Data Submitted:", formData);
+                    try {
+                        // Send the POST request to your API endpoint
+                        const response = await fetch('http://localhost:5000/api/details/details_cu', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                // The 'Authorization' header is now removed
+                            },
+                            body: JSON.stringify(formData)
+                        });
+
+                        const result = await response.json();
+
+                        if (!response.ok) {
+                            // If the server responded with an error
+                            throw new Error(result.message || 'Failed to save details.');
+                        }
+
+                        // --- SUCCESS --- ✅
+                        console.log('Success:', result);
+                        alert('Your details have been saved successfully!');
+
+                    } catch (error) {
+                        // --- ERROR --- ❌
+                        console.error('Submission Error:', error);
+                        alert(`An error occurred: ${error.message}`);
+                    } 
+                    }}>
                     <Step>
                         <div className="step-content">
                             <h3>Hey There 👋🏻!</h3>
                             <p>We're happy that you've taken the first step towards a healthier you. We need a few details to kickstart your journey.</p>
                             <br />
                             <h3>What is your name?</h3>
-                            <input 
+                            <input
                                 type='name' 
                                 placeholder='Enter your name' 
                                 className='input'
@@ -71,11 +96,13 @@ export const Details = () => {
                                     {/* Male Option */}
                                     <div 
                                         style={{ 
-                                        border: selectedGender === 'male' ? '2px solid black' : '1px solid transparent',
+                                        border: formData.gender === 'male' ? '2px solid black' : '1px solid transparent',
                                         borderRadius: '10px',
                                         transition: 'border 0.2s ease'
                                         }}
-                                        onClick={() => setFormData({ ...formData, gender: 'male' })}
+                                        onClick={() => {
+                                            setFormData({ ...formData, gender: 'male' })
+                                        }}
                                     >
                                         <GlareHover 
                                         children={'Male'} 
@@ -89,7 +116,7 @@ export const Details = () => {
                                     {/* Female Option */}
                                     <div 
                                         style={{ 
-                                        border: selectedGender === 'female' ? '2px solid black' : '1px solid transparent',
+                                        border: formData.gender === 'female' ? '2px solid black' : '1px solid transparent',
                                         borderRadius: '10px',
                                         transition: 'border 0.2s ease'
                                         }}
@@ -145,7 +172,7 @@ export const Details = () => {
                         <div className="step-content">
                             <h3>How active are you?</h3>
                             <p>Based on your lifestyle, we can assess your daily calorie requirements.</p>
-                            <div>
+                            <div    >
                                 <AnimatedList showGradients={false} displayScrollbar={false} items={[
                                         "Mostly Sitting Seated work, low movement.",
                                         "Often Standing Standing work, occasional walking.",
