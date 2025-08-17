@@ -9,8 +9,10 @@ import DualScrollPicker_Height from './Dualscroll_height.jsx';
 import AgeScrollPicker from './SingleScroll.jsx';
 import LiveLocationFinder from './Location.jsx';
 import AnimatedList from './AnimatedList/AnimatedList.jsx';
+import {useNavigate} from 'react-router-dom';
 
 export const Details = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         gender: null,
@@ -64,7 +66,7 @@ export const Details = () => {
                         // --- SUCCESS --- ✅
                         console.log('Success:', result);
                         alert('Your details have been saved successfully!');
-
+                        navigate("/dashboard");
                     } catch (error) {
                         // --- ERROR --- ❌
                         console.error('Submission Error:', error);
@@ -206,4 +208,4 @@ export const Details = () => {
             </DottedBackground>
         </div>
     );
-} 
+}
