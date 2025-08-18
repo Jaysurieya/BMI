@@ -4,7 +4,10 @@ import "../css/Background.css";
 const DottedBackground = ({ children }) => {
   return (
     <div className="animated-dots">
-      {children}
+      {/* Add a scrollable content wrapper inside the background */}
+      <div className="content-wrapper">
+        {children}
+      </div>
     </div>
   );
 };
