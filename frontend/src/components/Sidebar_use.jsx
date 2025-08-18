@@ -7,6 +7,8 @@
   import Logo from '../assets/logo.svg';
   import Background from '../components/Background'
   import HealthTrackerDashboard from './Home';
+  import MyPage from "./Main";
+  
 
   const links = [
     {
@@ -72,7 +74,7 @@
         {/* Main content area with proper margin */}
         <div className="main-content">
           <Background>
-            <HealthTrackerDashboard />
+            <MyPage />
           </Background>
         </div>       
       </div>

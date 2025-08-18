@@ -62,8 +62,8 @@ const HealthTrackerDashboard = () => {
   );
 
   return (
-    <div className="bg-gray-50 p-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-gray-50 p-8 max-w-screen-xl mx-auto rounded-2xl">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Your Trackers</h1>
@@ -200,4 +200,4 @@ const HealthTrackerDashboard = () => {
   );
 };
 
-export default HealthTrackerDashboard;
+export default HealthTrackerDashboard;  
