@@ -74,9 +74,15 @@
         {/* Main content area with proper margin */}
         <div className="main-content">
           <Background>
+            <p style={{"font-size" : "3rem",
+              "font-weight": "700",
+              "color": "#262626",
+              "margin-left": "0.5rem",
+              "padding-left": "35px",
+              "padding-top": "20px"}}>DashBoard</p>
             <MyPage />
           </Background>
-        </div>       
+        </div>        
       </div>
     );
   };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BentoGrid, BentoGridItem } from './Bento-grid';
 import { BellIcon } from '@heroicons/react/24/solid';
+import '../css/Main.css';
 
 // A placeholder for the header content
 const Skeleton = () => (
@@ -20,14 +21,8 @@ export default function MyPage() {
     {
       title: "Item One",
       description: "A short description for the first item.",
-      header: <Skeleton />,
       icon: <BellIcon style={{ height: '1rem', width: '1rem', color: '#737373' }} />,
-    },
-    {
-      title: "Item Two",
-      description: "A short description for the second item.",
-      header: <Skeleton />,
-      icon: <BellIcon style={{ height: '1rem', width: '1rem', color: '#737373' }} />,
+      className: "div_1",
     },
     {
       title: "Item Three",

@@ -90,3 +90,7 @@
 .dark .sidebar-icon-style {
   color: #e5e5e5; /* neutral-200 */
 }
+.main-content {
+  width: "100%";
+  display: flex;
+}

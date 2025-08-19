@@ -59,6 +59,10 @@
 
 /* You can add custom classes for column spans */
 @media (min-width: 768px) {
+  .div_1 {
+      grid-column: span 2 / span 2; /* Make it 2 columns wide */
+      grid-row: span 2 / span 2;    /* Make it 2 rows tall */
+    }
     .md-col-span-2 {
         grid-column: span 2 / span 2;
     }
