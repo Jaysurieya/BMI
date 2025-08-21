@@ -29,6 +29,7 @@ export default function MyPage() {
       description: "A short description for the third item.",
       header: <Skeleton />,
       icon: <BellIcon style={{ height: '1rem', width: '1rem', color: '#737373' }} />,
+      className: "div_1",
     },
     {
       title: "A Larger Item",
