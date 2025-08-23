@@ -1,10 +1,7 @@
-/*
-	Installed from https://reactbits.dev/default/
-*/
-
 import { useRef, useEffect, useCallback, useState } from "react";
 import { gsap } from "gsap";
 import "./MagicBento.css";
+import CompactCalendar from "../Calender";
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -14,39 +11,42 @@ const MOBILE_BREAKPOINT = 768;
 const cardData = [
   {
     color: "#060010",
-    title: "Analytics",
-    description: "Track user behavior",
-    label: "Insights",
+    component: <CompactCalendar />,
   },
   {
     color: "#060010",
     title: "Dashboard",
     description: "Centralized data view",
     label: "Overview",
+    component: <div>Dashboard Component</div>,
   },
   {
     color: "#060010",
     title: "Collaboration",
     description: "Work together seamlessly",
     label: "Teamwork",
+    component: <div>Collaboration Component</div>,
   },
   {
     color: "#060010",
     title: "Automation",
     description: "Streamline workflows",
     label: "Efficiency",
+    component: <div>Automation Component</div>,
   },
   {
     color: "#060010",
     title: "Integration",
     description: "Connect favorite tools",
     label: "Connectivity",
+    component: <div>Integration Component</div>,
   },
   {
     color: "#060010",
     title: "Security",
     description: "Enterprise-grade protection",
     label: "Protection",
+    component: <div>Security Component</div>,
   },
 ];
 
@@ -562,6 +562,9 @@ const MagicBento = ({
                 <div className="card__content">
                   <h2 className="card__title">{card.title}</h2>
                   <p className="card__description">{card.description}</p>
+                  <div className="card__component">
+                    {card.component}
+                  </div>
                 </div>
               </ParticleCard>
             );
@@ -685,6 +688,9 @@ const MagicBento = ({
               <div className="card__content">
                 <h2 className="card__title">{card.title}</h2>
                 <p className="card__description">{card.description}</p>
+                <div className="card__component">
+                  {card.component}
+                </div>
               </div>
             </div>
           );
