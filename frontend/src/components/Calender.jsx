@@ -104,9 +104,9 @@ const CompactCalendar = () => {
           gap: '1px',
           marginBottom: '2px'
         }}>
-          {dayNames.map(day => (
+          {dayNames.map((day, index) => (
             <div
-              key={day}
+              key={index}
               style={{
                 textAlign: 'center', padding: '2px',
                 fontSize: '9px',
