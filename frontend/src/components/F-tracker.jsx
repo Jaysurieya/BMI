@@ -1,11 +1,10 @@
 import React from 'react';
-import camera from '../assets/image2vector.svg';
+import { FaCamera } from "react-icons/fa";
 
-// This component holds one macro item (e.g., Protein)
 const MacroStat = ({ label, value }) => (
   <div>
     <p style={{ margin: '0 0 4px 0', fontSize: '14px', color: '#555' }}>
-      {label}: <span style={{ fontWeight: '600' }}>{value}%</span>
+      {label}: <span style={{ fontWeight: '600' }}>{`${value}%`}</span>
     </p>
     <div style={{ 
       backgroundColor: '#f0f0f0', 
@@ -35,7 +34,7 @@ const FoodTracker = () => {
   return (
     <div style={{ 
       fontFamily: 'system-ui, -apple-system, sans-serif',
-      padding: '20px', // This padding creates the inner spacing
+      padding: '20px',
       maxWidth: '350px'
     }}>
       
@@ -43,7 +42,7 @@ const FoodTracker = () => {
         fontSize: '22px', 
         fontWeight: 'bold', 
         margin: '0 0 20px 0',
-        color: '#ffffffff'
+        color: '#ffffffff' // Assuming white text for a dark background
       }}>
         Your Trackers
       </h2>
@@ -73,12 +72,16 @@ const FoodTracker = () => {
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* ✅ ICON: The react-icons component is used here. */}
           <button style={{
-             background: 'none', border: 'none', cursor: 'pointer', fontSize: '24px'
+            background: 'none', border: 'none', cursor: 'pointer',
+            // You can adjust the icon color and size directly here
+            color: '#888',
+            fontSize: '24px' 
           }}>
-          <img src={camera} alt="camera" className="logo" />
+            <FaCamera />
           </button>
-           <button style={{
+          <button style={{
             width: '32px', height: '32px', borderRadius: '8px', border: '1.5px solid #ff9500',
             backgroundColor: 'transparent', color: '#ff9500', cursor: 'pointer',
             fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center'
