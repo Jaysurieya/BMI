@@ -2,6 +2,7 @@ import { useRef, useEffect, useCallback, useState } from "react";
 import { gsap } from "gsap";
 import "./MagicBento.css";
 import CompactCalendar from "../Calender";
+import FoodTracker from "../F-tracker";
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -29,10 +30,7 @@ const cardData = [
   },
   {
     color: "#060010",
-    title: "Automation",
-    description: "Streamline workflows",
-    label: "Efficiency",
-    component: <div>Automation Component</div>,
+    component: <FoodTracker />,
   },
   {
     color: "#060010",
@@ -544,6 +542,8 @@ const MagicBento = ({
             },
           };
 
+          const hasContent = card.title || card.label || card.description;
+
           if (enableStars) {
             return (
               <ParticleCard
@@ -556,16 +556,26 @@ const MagicBento = ({
                 clickEffect={clickEffect}
                 enableMagnetism={enableMagnetism}
               >
-                <div className="card__header">
-                  <div className="card__label">{card.label}</div>
-                </div>
-                <div className="card__content">
-                  <h2 className="card__title">{card.title}</h2>
-                  <p className="card__description">{card.description}</p>
-                  <div className="card__component">
+                {hasContent ? (
+                  <>
+                    {card.label && (
+                      <div className="card__header">
+                        <div className="card__label">{card.label}</div>
+                      </div>
+                    )}
+                    <div className="card__content">
+                      {card.title && <h2 className="card__title">{card.title}</h2>}
+                      {card.description && <p className="card__description">{card.description}</p>}
+                      <div className="card__component">
+                        {card.component}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="card__component card__component--full">
                     {card.component}
                   </div>
-                </div>
+                )}
               </ParticleCard>
             );
           }
@@ -682,16 +692,26 @@ const MagicBento = ({
                 el.addEventListener("click", handleClick);
               }}
             >
-              <div className="card__header">
-                <div className="card__label">{card.label}</div>
-              </div>
-              <div className="card__content">
-                <h2 className="card__title">{card.title}</h2>
-                <p className="card__description">{card.description}</p>
-                <div className="card__component">
+              {hasContent ? (
+                <>
+                  {card.label && (
+                    <div className="card__header">
+                      <div className="card__label">{card.label}</div>
+                    </div>
+                  )}
+                  <div className="card__content">
+                    {card.title && <h2 className="card__title">{card.title}</h2>}
+                    {card.description && <p className="card__description">{card.description}</p>}
+                    <div className="card__component">
+                      {card.component}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="card__component card__component--full">
                   {card.component}
                 </div>
-              </div>
+              )}
             </div>
           );
         })}
