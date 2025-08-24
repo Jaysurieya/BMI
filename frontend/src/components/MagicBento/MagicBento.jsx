@@ -43,7 +43,7 @@ const cardData = [
   },
   {
     color: "#060010",
-    title: "Dashboard",
+    title: "Others trackers",
     component: <AnimatedList items={trackerItems} showGradients={false}/>,
   },
   {
