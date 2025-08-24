@@ -11,8 +11,9 @@ import {
   Activity, 
   Dumbbell, 
   Scale,
-  ChevronLeft
 } from 'lucide-react';
+import HealthAnalysisCarousel from "../Analysis.jsx";
+import AnimatedTooltip from "../Tracker_icons.jsx";
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -36,15 +37,14 @@ const cardData = [
   },
   {
     color: "#060010",
-    title: "Dashboard",
-    description: "Centralized data view",
-    label: "Overview",
-    component: <div>Dashboard Component</div>,
+    component: <AnimatedTooltip />,
   },
   {
     color: "#060010",
     title: "Others trackers",
-    component: <AnimatedList items={trackerItems} showGradients={false}/>,
+    component:  <div style={{ height: '300px', width: '100%' }}>
+                  <HealthAnalysisCarousel />
+                </div>,
   },
   {
     color: "#060010",
