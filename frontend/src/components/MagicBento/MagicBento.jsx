@@ -3,11 +3,31 @@ import { gsap } from "gsap";
 import "./MagicBento.css";
 import CompactCalendar from "../Calender";
 import FoodTracker from "../F-tracker";
+import AnimatedList from "../AnimatedList/AnimatedList"
+import { 
+  Moon, 
+  Pill, 
+  Droplets, 
+  Activity, 
+  Dumbbell, 
+  Scale,
+  ChevronLeft
+} from 'lucide-react';
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = "132, 0, 255";
 const MOBILE_BREAKPOINT = 768;
+
+const trackerItems = [
+    { name: "Sleep Tracker", icon: <Moon /> },
+    { name: "Medicine Tracker", icon: <Pill /> },
+    { name: "Water Tracker", icon: <Droplets /> },
+    { name: "Steps Tracker", icon: <Activity /> },
+    { name: "Workout Tracker", icon: <Dumbbell /> },
+    { name: "Weight Tracker", icon: <Scale /> },
+    "--------------------",
+  ];
 
 const cardData = [
   {
@@ -23,10 +43,8 @@ const cardData = [
   },
   {
     color: "#060010",
-    title: "Collaboration",
-    description: "Work together seamlessly",
-    label: "Teamwork",
-    component: <div>Collaboration Component</div>,
+    title: "Dashboard",
+    component: <AnimatedList items={trackerItems} showGradients={false}/>,
   },
   {
     color: "#060010",

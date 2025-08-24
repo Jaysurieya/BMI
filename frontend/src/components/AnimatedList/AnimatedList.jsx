@@ -59,6 +59,19 @@ const AnimatedList = ({
   const [topGradientOpacity, setTopGradientOpacity] = useState(0);
   const [bottomGradientOpacity, setBottomGradientOpacity] = useState(1);
 
+  // Helper function to get display text from item
+  const getItemText = (item) => {
+    if (typeof item === 'string') {
+      return item;
+    }
+    return item.name || item.text || String(item);
+  };
+
+  // Helper function to check if item has icon
+  const hasIcon = (item) => {
+    return typeof item === 'object' && item !== null && item.icon;
+  };
+
   const handleScroll = (e) => {
     const { scrollTop, scrollHeight, clientHeight } = e.target;
     setTopGradientOpacity(Math.min(scrollTop / 50, 1));
@@ -143,7 +156,16 @@ const AnimatedList = ({
             <div
               className={`item ${selectedIndex === index ? "selected" : ""} ${itemClassName}`}
             >
-              <p className="item-text">{item}</p>
+              {hasIcon(item) ? (
+                <div className="item-with-icon">
+                  <span className="item-icon">
+                    {item.icon}
+                  </span>
+                  <p className="item-text">{getItemText(item)}</p>
+                </div>
+              ) : (
+                <p className="item-text">{getItemText(item)}</p>
+              )}
             </div>
           </AnimatedItem>
         ))}
