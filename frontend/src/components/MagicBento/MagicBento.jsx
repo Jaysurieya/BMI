@@ -52,17 +52,6 @@ const cardData = [
   },
   {
     color: "#060010",
-    title: "Integration",
-    description: "Connect favorite tools",
-    label: "Connectivity",
-    component: <div>Integration Component</div>,
-  },
-  {
-    color: "#060010",
-    title: "Security",
-    description: "Enterprise-grade protection",
-    label: "Protection",
-    component: <div>Security Component</div>,
   },
 ];
 
