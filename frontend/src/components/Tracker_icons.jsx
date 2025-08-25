@@ -4,7 +4,7 @@ import {
   Moon, 
   Pill, 
   Droplets, 
-  Activity, 
+  Footprints, 
   Dumbbell, 
   Scale,
 } from 'lucide-react';
@@ -55,7 +55,7 @@ function AnimatedTooltip() {
             borderColor="#444"    // Added a subtle border
             glareColor="#ffffff"   // Corrected to a standard 6-digit hex
             >
-            <Activity color="#ff4d00ff" size={24} />
+            <Footprints color="#ff4d00ff" size={24} />
         </GlareHover>
         <GlareHover
             width="50px"
