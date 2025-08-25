@@ -4,6 +4,7 @@ import "./MagicBento.css";
 import CompactCalendar from "../Calender";
 import FoodTracker from "../F-tracker";
 import AnimatedList from "../AnimatedList/AnimatedList"
+import MotivationTipsBox from "../Suggester";
 import { 
   Moon, 
   Pill, 
@@ -52,6 +53,7 @@ const cardData = [
   },
   {
     color: "#060010",
+    component: <MotivationTipsBox />,
   },
 ];
 
