@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-/*calender */
 const CompactCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
