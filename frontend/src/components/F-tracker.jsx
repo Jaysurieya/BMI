@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Camera,Utensils } from "lucide-react";
+import { Camera,Utensils,Lightbulb } from "lucide-react";
 import GlareHover from './GlareHover/GlareHover';
+
 
 const MacroStat = ({ label, value, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -229,87 +230,20 @@ const FoodTracker = () => {
       </div>
 
       {/* Creative Suggest Ideas Button */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        opacity: isLoaded ? 1 : 0,
-        transform: isLoaded ? 'translateY(0)' : 'translateY(30px)',
-        transition: 'all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) 1.2s'
-      }}>
-        <button style={{
-          background: 'linear-gradient(135deg, #7300ff 0%, #8f4dff 50%, #ab7aff 100%)',
-          border: 'none',
-          borderRadius: '25px',
-          padding: '12px 24px',
-          color: 'white',
-          fontSize: '16px',
-          fontWeight: '600',
-          cursor: 'pointer',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: '0 8px 25px rgba(115, 0, 255, 0.4)',
-          transition: 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.transform = 'translateY(-2px)';
-          e.target.style.boxShadow = '0 12px 35px rgba(115, 0, 255, 0.5)';
-          e.target.style.background = 'linear-gradient(135deg, #8f4dff 0%, #ab7aff 50%, #c084fc 100%)';
-          // Trigger shimmer effect on hover
-          const shimmer = e.target.querySelector('.shimmer-effect');
-          if (shimmer) {
-            shimmer.style.animation = 'buttonShimmer 0.8s ease-out';
-          }
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 8px 25px rgba(115, 0, 255, 0.4)';
-          e.target.style.background = 'linear-gradient(135deg, #7300ff 0%, #8f4dff 50%, #ab7aff 100%)';
-          // Stop shimmer effect
-          const shimmer = e.target.querySelector('.shimmer-effect');
-          if (shimmer) {
-            shimmer.style.animation = 'none';
-          }
-        }}
-        onClick={(e) => {
-          // Create ripple effect
-          const ripple = document.createElement('span');
-          const rect = e.target.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-          const x = e.clientX - rect.left - size / 2;
-          const y = e.clientY - rect.top - size / 2;
-          
-          ripple.style.width = ripple.style.height = size + 'px';
-          ripple.style.left = x + 'px';
-          ripple.style.top = y + 'px';
-          ripple.style.position = 'absolute';
-          ripple.style.borderRadius = '50%';
-          ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-          ripple.style.transform = 'scale(0)';
-          ripple.style.animation = 'ripple 0.6s linear';
-          ripple.style.pointerEvents = 'none';
-          
-          e.target.appendChild(ripple);
-          
-          setTimeout(() => {
-            ripple.remove();
-          }, 600);
-        }}>
-          <span>💡</span>
-          Suggest Some Ideas
-          <div className="shimmer-effect" style={{
-            position: 'absolute',
-            top: 0,
-            left: '-100%',
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-            animation: 'none'
-          }} />
-        </button>
-      </div>
+      <GlareHover
+        width="300px"
+        height="50px"
+        background="#060010"
+        borderRadius="15px"
+        borderColor="#444"
+        glareColor="#ffffff"
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
+          <Lightbulb color="#7300ff" />
+          <h1 style={{ color: "#7300ff", fontSize: "18px", margin: 0 }}>Suggest Some Ideas</h1>
+        </div>
+      </GlareHover>
+
 
       <style jsx>{`
         @keyframes ripple {
