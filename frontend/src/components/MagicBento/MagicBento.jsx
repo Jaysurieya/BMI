@@ -352,7 +352,7 @@ const GlobalSpotlight = ({
   glowColor = DEFAULT_GLOW_COLOR,
 }) => {
   const spotlightRef = useRef(null);
-  const isInsideSection = useRef(false);
+  const isInsSection = useRef(false);
 
   useEffect(() => {
     if (disableAnimations || !gridRef?.current || !enabled) return;

@@ -8,7 +8,9 @@
   import Background from '../components/Background'
   import HealthTrackerDashboard from './Home';
   import MyPage from "./Main";
-  
+  import {useNavigate} from 'react-router-dom';
+
+
 
   const links = [
     {
@@ -30,6 +32,7 @@
 
   const SidebarUse = () => {
     const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate();
 
     return (
       // Main layout container
@@ -51,7 +54,7 @@
               </div>
             </div>
             {/* Optional: Add a footer or user profile section here */}
-            <div>
+            <div onClick={() => {navigate('/profile')}} >
               <SidebarLink
                 link={{
                   label: "Profile",

@@ -18,10 +18,10 @@ function AnimatedTooltip() {
           <GlareHover
             width="50px"
             height="50px"
-            background="#060010" // Add a background color to make the container visible
-            borderRadius="15px"    // Adjusted for a more circular look
-            borderColor="#444"    // Added a subtle border
-            glareColor="#ffffff"   // Corrected to a standard 6-digit hex
+            background="#060010" 
+            borderRadius="15px"    
+            borderColor="#444"    
+            glareColor="#ffffff"   
             >
             <Moon color="#7300ffff" size={24} />
         </GlareHover>
