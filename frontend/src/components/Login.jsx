@@ -4,7 +4,7 @@ import '../css/login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// login page
+
 function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
