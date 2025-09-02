@@ -21,7 +21,7 @@ stateful button
 sticky banner
 sticky scroll reveal
 svg mask reveal
-time line
+time line   
 typre writer
 modal dialog - framer
 
