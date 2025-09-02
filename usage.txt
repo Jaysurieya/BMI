@@ -29,4 +29,9 @@ modal dialog - framer
 documentation:
 
 1st august ---> dataset preparation
-2nd august ---> dataset preprocessing 
+2nd august ---> dataset preprocessing :
+
+doing data augumentation for classes having less images
+doing undersampling for the classes having more images
+
+these r not done by locally saving this is done by "on the fly approach"
