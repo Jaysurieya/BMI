@@ -26,3 +26,7 @@ typre writer
 modal dialog - framer
 
 
+documentation:
+
+1st august ---> dataset preparation
+2nd august ---> dataset preprocessing 
