@@ -35,3 +35,6 @@ doing data augumentation for classes having less images
 doing undersampling for the classes having more images
 
 these r not done by locally saving this is done by "on the fly approach"
+
+model changed to efficientnet-b0
+and it took about 5 hours of training
