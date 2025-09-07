@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/Background.css";
 
+// dotted background component with scrollable content
+
 const DottedBackground = ({ children }) => {
   return (
     <div className="animated-dots">
