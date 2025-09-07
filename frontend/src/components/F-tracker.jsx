@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Camera,Utensils,Lightbulb } from "lucide-react";
 import GlareHover from './GlareHover/GlareHover';
 
+// Food Tracker Component
 
 const MacroStat = ({ label, value, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
