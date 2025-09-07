@@ -38,3 +38,5 @@ these r not done by locally saving this is done by "on the fly approach"
 
 model changed to efficientnet-b0
 and it took about 5 hours of training
+
+planned about the next steps [and also studied for tomorrows exam]
