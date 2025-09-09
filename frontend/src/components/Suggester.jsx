@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Trophy, Target, Zap, Heart } from 'lucide-react';
-
+// suggester
 const MotivationTipsBox = () => {
   const [currentTip, setCurrentTip] = useState(0);
 
