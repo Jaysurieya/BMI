@@ -4,7 +4,8 @@ import '../css/login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { validatePassword, getPasswordStrengthColor, getPasswordStrengthText } from '../lib/utils';
-import axios from 'axios';
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../firebase"; 
 
 function Signup() {
   const navigate = useNavigate();
@@ -89,10 +90,19 @@ function Signup() {
     }
   };
 
-  const handleGoogleLogin = () => {
-    console.log('Google login initiated');
-    alert('Google OAuth would be integrated here!');
-  };
+  const handleGoogleLogin = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    // You can access user info with result.user
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+      navigate('/details');
+    }, 1000);
+  } catch (error) {
+    alert(error.message || "Google signup failed");
+  }
+};
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
