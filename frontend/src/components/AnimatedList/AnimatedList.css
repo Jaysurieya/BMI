@@ -1,4 +1,3 @@
-
 .scroll-list-container {
   position: relative;
   width: 500px;
@@ -32,23 +31,60 @@
   scrollbar-width: none;
 }
 
+/* 
+=== ITEM STYLING - MODIFY COLORS HERE ===
+*/
+
 .item {
-  padding: 0px;
-  background-color: rgba(29, 0, 56, 0.8);
+  padding: 3px;
+  /* Default/Normal State Colors */
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #1f2020;
   border: 1px solid black;
   border-radius: 15px;
   margin-bottom: 0.5rem;
+  transition: all 0.3s ease; /* Smooth transitions */
+  cursor: pointer;
 }
 
+/* Selected/Clicked State - CHANGE THESE COLORS FOR SELECTED EFFECT */
 .item.selected {
-  background-color: rgba(132, 0, 255, 0.8);
-  color: #1f2020;
+  background-color: rgba(50, 200, 100, 0.9) !important; /* Green when selected */
+  color: white !important;
+  border-color: #32c864 !important;
+  box-shadow: 0 0 15px rgba(50, 200, 100, 0.4) !important; /* Glow effect */
+}
+
+/* Hover State - CHANGE THESE COLORS FOR HOVER EFFECT */
+/* Apply hover effects using both CSS :hover and JS hovered class */
+.item:hover:not(.selected),
+.item.hovered:not(.selected) {
+  background-color: rgba(215, 215, 215, 0.7); /* Light blue on hover */
+  color: white;
+  border-color: rgba(215, 215, 215, 0.7);
+  transform: translateY(-2px); /* Subtle lift effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Different hover effect when item is selected */
+.item.selected:hover {
+  background-color: rgba(50, 200, 100, 1); /* Slightly brighter green on hover */
+  box-shadow: 0 0 20px rgba(50, 200, 100, 0.6); /* Stronger glow */
+}
+
+/* Active/Click State - CHANGE THESE COLORS FOR CLICK EFFECT */
+.item:active {
+  background-color: rgba(255, 100, 100, 0.8); /* Red when clicking */
+  color: white;
+  border-color: #ff4444;
+  transform: translateY(1px); /* Slight press down effect */
 }
 
 .item-text {
-  color: white;
+  color: inherit; /* Inherit color from parent .item */
   padding-left: 15px;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 /* NEW: Icon support styles */
@@ -72,7 +108,8 @@
   width: 1.25rem;
   height: 1.25rem;
   stroke: currentColor;
-  color: white;
+  color: inherit; /* Inherit color from parent .item */
+  transition: color 0.3s ease;
 }
 
 /* Update item-text for icons */
@@ -81,9 +118,19 @@
   flex: 1;
 }
 
+/* Hover state for icons */
+.item:hover .item-icon svg {
+  color: inherit;
+}
+
 /* Selected state for icons */
 .item.selected .item-icon svg {
-  color: #1f2020;
+  color: inherit;
+}
+
+/* Active state for icons */
+.item:active .item-icon svg {
+  color: inherit;
 }
 
 .top-gradient {
@@ -107,3 +154,46 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
+
+/* 
+=== COLOR CUSTOMIZATION GUIDE ===
+
+To modify colors, update these sections:
+
+1. DEFAULT STATE (.item):
+   - background-color: rgba(255, 255, 255, 0.8)
+   - color: #1f2020
+   - border: 1px solid black
+
+2. HOVER STATE (.item:hover):
+   - background-color: rgba(100, 150, 255, 0.7)
+   - color: white
+   - border-color: #4a90e2
+
+3. SELECTED STATE (.item.selected):
+   - background-color: rgba(50, 200, 100, 0.9)
+   - color: white
+   - border-color: #32c864
+
+4. ACTIVE/CLICK STATE (.item:active):
+   - background-color: rgba(255, 100, 100, 0.8)
+   - color: white
+   - border-color: #ff4444
+
+Example Alternative Color Schemes:
+
+DARK THEME:
+- Default: background: #2a2a2a, color: #ffffff
+- Hover: background: #3a3a3a, color: #ffffff
+- Selected: background: #4a4a4a, color: #ffffff
+
+MATERIAL DESIGN:
+- Default: background: #f5f5f5, color: #212121
+- Hover: background: #e3f2fd, color: #1976d2
+- Selected: background: #1976d2, color: #ffffff
+
+WARM THEME:
+- Default: background: #fff8e1, color: #5d4037
+- Hover: background: #ffecb3, color: #bf360c
+- Selected: background: #ff6f00, color: #ffffff
+*/

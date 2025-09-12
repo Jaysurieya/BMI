@@ -55,6 +55,7 @@ const AnimatedList = ({
 }) => {
   const listRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
+  const [hoveredIndex, setHoveredIndex] = useState(-1); // NEW: Separate hover state
   const [keyboardNav, setKeyboardNav] = useState(false);
   const [topGradientOpacity, setTopGradientOpacity] = useState(0);
   const [bottomGradientOpacity, setBottomGradientOpacity] = useState(1);
@@ -145,7 +146,9 @@ const AnimatedList = ({
             key={index}
             delay={0.1}
             index={index}
-            onMouseEnter={() => setSelectedIndex(index)}
+            // FIXED: Only set hover state, don't change selection on hover
+            onMouseEnter={() => setHoveredIndex(index)}
+            // FIXED: Only set selection on actual click
             onClick={() => {
               setSelectedIndex(index);
               if (onItemSelect) {
@@ -154,7 +157,7 @@ const AnimatedList = ({
             }}
           >
             <div
-              className={`item ${selectedIndex === index ? "selected" : ""} ${itemClassName}`}
+              className={`item ${selectedIndex === index ? "selected" : ""} ${hoveredIndex === index ? "hovered" : ""} ${itemClassName}`}
             >
               {hasIcon(item) ? (
                 <div className="item-with-icon">
